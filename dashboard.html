@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Blood Bank System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center">Dashboard</h2>
+            <div id="userInfo" class="mt-4">
+                <h4>Login Successful!</h4>
+                <p>You have successfully logged into the system.</p>
+            </div>
+            <button id="logoutButton" class="btn btn-danger btn-block mt-4">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Check if the user is authenticated
+        if (!localStorage.getItem('authToken')) {
+            // If not, redirect to login page
+            window.location.href = 'login.html';
+        }
+// After the page loads, replace the URL with a cleaner one
+if (window.location.pathname === '/dashboard.html') {
+    // Change the URL to something like '/dashboard/12345'
+    history.replaceState(null, null, '/123456789');
+}
+
+        // Handle logout action
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            // Clear authentication token
+            localStorage.removeItem('authToken');
+            window.location.href = 'login.html'; // Redirect to login page after logout
+        });
+    </script>
+</body>
+</html>
