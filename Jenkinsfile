@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Deploy to Nginx') {
+        stage('Deploy') {
             steps {
-                echo 'Deploying website...'
                 sh '''
+                echo "Starting deploy"
                 rm -rf /var/www/html/*
-                cp -r * /var/www/html/
+                cp -r ./* /var/www/html/
+                echo "Deploy done"
                 '''
             }
         }
