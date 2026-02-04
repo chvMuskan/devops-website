@@ -2,14 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Deploy') {
+        stage('Deploy to Nginx') {
             steps {
-                sh '''
-                echo "Starting deploy"
-                rm -rf /var/www/html/*
-                cp -r ./* /var/www/html/
-                echo "Deploy done"
-                '''
+                sh 'rm -rf /var/www/kyqwfg.in/*'
+                sh 'cp -r ${WORKSPACE}/* /var/www/kyqwfg.in/'
+                sh 'chown -R www-data:www-data /var/www/kyqwfg.in'
             }
         }
     }
